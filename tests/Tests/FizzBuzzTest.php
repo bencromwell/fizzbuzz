@@ -37,10 +37,22 @@ class FizzBuzzTest extends TestCase
         }
     }
 
+    public function testAlternatives()
+    {
+        $this->fizzBuzz = new FizzBuzz(10, 20);
+        $this->verify([10, 30, 50, 70, 90], 'Fizz');
+        $this->verify([20, 40, 60, 80, 100], 'FizzBuzz');
+
+        $this->fizzBuzz = new FizzBuzz(3, 11);
+        $this->verify([3, 6, 9, 12, 15], 'Fizz');
+        $this->verify([11, 22, 44, 55, 77, 88], 'Buzz');
+        $this->verify([33, 66, 99], 'FizzBuzz');
+    }
+
     private function verify(array $cases, string $expected)
     {
         foreach ($cases as $case) {
-            $this->assertEquals($expected, $this->fizzBuzz->get($case));
+            $this->assertEquals($expected, $this->fizzBuzz->get($case), 'Case ' . $case . ' failed');
         }
     }
 }
