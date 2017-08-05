@@ -4,14 +4,21 @@ namespace FizzBuzz;
 
 class FizzBuzz
 {
-    protected $divisibleForFizz = 3;
-    protected $divisibleForBuzz = 5;
+    const DEFAULT_FIZZ = 3;
+    const DEFAULT_BUZZ = 5;
 
-    /**
-     * @param int $case
-     *
-     * @return string
-     */
+    /** @var int */
+    protected $divisibleForFizz;
+
+    /** @var int */
+    protected $divisibleForBuzz;
+
+    public function __construct(int $divisibleForFizz = self::DEFAULT_FIZZ, int $divisibleForBuzz = self::DEFAULT_BUZZ)
+    {
+        $this->divisibleForFizz = $divisibleForFizz;
+        $this->divisibleForBuzz = $divisibleForBuzz;
+    }
+
     public function get(int $case): string
     {
         if ($this->isFizzBuzz($case)) {
